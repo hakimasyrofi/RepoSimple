@@ -108,6 +108,9 @@ const Octocat: NextPage = () => {
         <Profile data={data} visitorCount={visitorCount} />
         <Repository data={data} />
       </div>
+      <div className="w-full bg-gray-100 py-4 text-sm text-gray-600 text-center">
+        <p>© 2023 Pixel8Labs. All rights reserved.</p>
+      </div>
     </>
   );
 };

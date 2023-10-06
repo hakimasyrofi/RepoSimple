@@ -74,7 +74,17 @@ func AddLoggedInVisitor(c *gin.Context) {
 		return
 	}
 
-	if len(loggedInVisitor) > 0 {
+	email := loggedInVisitor["user"].(map[string]interface{})["email"].(string)
+	emailExists := false
+	for _, v := range visitorData.LoggedInVisitor {
+		vEmail := v["user"].(map[string]interface{})["email"].(string)
+		if vEmail == email {
+			emailExists = true
+			break
+		}
+	}
+
+	if len(loggedInVisitor) > 0 && !emailExists {
 		visitorData.LoggedInVisitor = append(visitorData.LoggedInVisitor, loggedInVisitor)
 	}
 
